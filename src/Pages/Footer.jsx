@@ -23,7 +23,7 @@ const Footer = () => {
                     {/* Left Section */}
                     <Col md={6} className="text-left mb-md-0 ">
                         <ul className="list-unstyled">
-                            <li><a href="/teach-on-road-to-knowledge" className="text-light text-decoration-none">Teach on SMARTLEARN</a></li>
+                          <li><a href="/teach-on-road-to-knowledge" className="text-light text-decoration-none">Teach on SMARTLEARN</a></li>
                             <li><a href="/get-the-app" className="text-light text-decoration-none">Get the App</a></li>
                             <li><a href="/about-us" className="text-light text-decoration-none">About Us</a></li>
                             <li><a href="/contact-us" className="text-light text-decoration-none">Contact Us</a></li>

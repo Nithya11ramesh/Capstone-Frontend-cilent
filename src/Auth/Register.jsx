@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import  { useState } from 'react';
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -26,20 +25,34 @@ const Register = () => {
     password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
   });
 
+  
   const onSubmit = async (values, { setSubmitting }) => {
     setLoading(true);
     try {
-      const response = await axios.post('https://server-o2fj.onrender.com/apiUsers/register', values);
-      message.success('Registration successful');
-      navigate('/login');
+      const response = await axios.post('https://capstone-backend-05tj.onrender.com/apiUsers/register', values);
+      
+      // Check if the response contains the user data (e.g., token or user object)
+      if (response.data) {
+        // Store user data in session storage
+        sessionStorage.setItem('user', JSON.stringify(response.data));
+        
+        message.success('Registration successful');
+        
+        // Redirect to login page after successful registration
+        navigate('/login');
+      } else {
+        message.error('Registration failed! Please try again.');
+      }
     } catch (error) {
+      // Log the error for better debugging
+      console.error("Registration Error: ", error.response ? error.response.data : error.message);
       message.error('Registration failed! Please try again.');
     } finally {
       setLoading(false);
       setSubmitting(false);
     }
   };
-
+  
   return (
     <div className="container">
       <div className="card mb-3">
@@ -85,7 +98,6 @@ const Register = () => {
                     <div className='mt-3'>
                       <p className='text-center playwrite-sk'>Already have an account? <Link to={'/login'}>Login</Link></p>
                     </div>
-
                   </Form>
                 )}
               </Formik>

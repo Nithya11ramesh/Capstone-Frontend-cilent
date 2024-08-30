@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import axios from 'axios';
 import * as Yup from 'yup';
 import { AuthContext } from '../ContextAPI/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -27,12 +28,26 @@ const Login = () => {
     const handleLogin = async (values) => {
         setLoading(true);
         try {
-            await login(values);
+            // Sending a POST request to the backend login route
+            const response = await axios.post('https://capstone-backend-05tj.onrender.com/login', {
+                email: values.email,
+                password: values.password,
+            });
+    
+            // Extracting the token from the response
+            const { token } = response.data;
+    
+            // Storing the token in localStorage for further authenticated requests
+            localStorage.setItem('token', token);
+    
+            // Fetch user details after successful login
             await fetchUserDetails();
-            setLoading(false);
+            message.success('Login successful!');
         } catch (error) {
+            // Handling errors
             message.error('Invalid credentials');
             console.error(error);
+        } finally {
             setLoading(false);
         }
     };
@@ -70,7 +85,7 @@ const Login = () => {
                     </div>
                     <div className="col-md-7 col-12">
                         <div className="card-body">
-                            <h1 className="text-center pacifico-regular" style={{ color: 'gray' }}>
+                            <h1 className="text-center pacifico-regular" style={{ color: 'yellow' }}>
                                 <i className="bi bi-person-fill"> Login</i>
                             </h1>
                             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleLogin}>
