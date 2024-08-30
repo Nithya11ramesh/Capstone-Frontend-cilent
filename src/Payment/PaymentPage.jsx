@@ -10,7 +10,7 @@ import { Container, Card, } from 'react-bootstrap';
 import { useParams, useLocation } from "react-router-dom";
 import axios from 'axios';
 // Load your publishable key from Stripe
-const stripePromise = loadStripe("pk_test_51PcnfQKiN6cZCYZsIyztW2luLdhmTftFc7mncXf21z9d9EV6X47DcJF8RSCfDbmsCLNruTY10eng8JLlICKNXeRI00TobzzP6n");
+const stripePromise = loadStripe("sk_test_51Pt9giP4khmHONAmexWH3oUKuS3nElMiytONcLQePmM7LgG7xIyyNOzKNovSHQIWWfX4AYA05LeqwaKE5dXUWIQ800N1QLKchk");
 
 
 const PaymentPage = ({ onSuccess = () => { } }) => {
@@ -48,7 +48,7 @@ const PaymentPage = ({ onSuccess = () => { } }) => {
 
             const amountToSend = Math.round(price * 100); // Convert to cents
 
-            const response = await axios.post(`https://server-o2fj.onrender.com/apiPayments/payment/${enrollmentId}`, {
+            const response = await axios.post(`https://capstone-backend-05tj.onrender.com//apiPayments/payment/${enrollmentId}`, {
                 payment_method_id: paymentMethod.id,
                 amount: amountToSend,
                 enrollment_id: enrollmentId,
