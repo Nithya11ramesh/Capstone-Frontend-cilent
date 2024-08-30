@@ -20,7 +20,7 @@ export const AssignmentProvider = ({ children }) => {
     const fetchAssignmentsByCourseId = async (courseId) => {
         setLoading(true);
         try {
-            const response = await axios.get(`https://server-o2fj.onrender.com/apiAssignments/${courseId}`, {
+            const response = await axios.get(`https://capstone-backend-05tj.onrender.com/apiAssignments/${courseId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -43,7 +43,7 @@ export const AssignmentProvider = ({ children }) => {
 
     const addAssignment = async (courseId, assignmentData) => {
         try {
-            const response = await axios.post(`https://server-o2fj.onrender.com/apiAssignments/${courseId}`, assignmentData, {
+            const response = await axios.post(`https://capstone-backend-05tj.onrender.com/apiAssignments/${courseId}`, assignmentData, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export const AssignmentProvider = ({ children }) => {
     const fetchAssignmentByAssignmentId = async (assignmentId) => {
         setLoading(true);
         try {
-            const response = await axios.get(`https://server-o2fj.onrender.com/apiAssignments/assignment/${assignmentId}`, {
+            const response = await axios.get(`https://capstone-backend-05tj.onrender.com/apiAssignments/assignment/${assignmentId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -95,7 +95,7 @@ export const AssignmentProvider = ({ children }) => {
 
     const updateAssignment = async (assignmentId, updatedAssignment) => {
         try {
-            const response = await axios.put(`https://server-o2fj.onrender.com/apiAssignments/${assignmentId}`, updatedAssignment, {
+            const response = await axios.put(`https://capstone-backend-05tj.onrender.com/apiAssignments/${assignmentId}`, updatedAssignment, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ export const AssignmentProvider = ({ children }) => {
 
     const addSubmission = async (assignmentId, submissionUrl) => {
         try {
-            const response = await axios.post(`https://server-o2fj.onrender.com/apiAssignments/submit/${assignmentId}`, { submissionUrl }, {
+            const response = await axios.post(`https://capstone-backend-05tj.onrender.com/apiAssignments/submit/${assignmentId}`, { submissionUrl }, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ export const AssignmentProvider = ({ children }) => {
         // console.log('Deleting submission with ID:', submissionId, 'for assignment:', assignmentId);
 
         try {
-            await axios.delete(`https://server-o2fj.onrender.com/apiAssignments/submission/${assignmentId}/${submissionId}`, {
+            await axios.delete(`https://capstone-backend-05tj.onrender.com/apiAssignments/submission/${assignmentId}/${submissionId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -141,7 +141,7 @@ export const AssignmentProvider = ({ children }) => {
 
     const updateSubmission = async (submissionId, updatedSubmission) => {
         try {
-            const response = await axios.put(`https://server-o2fj.onrender.com/apiAssignments/submission/${submissionId}`, updatedSubmission, {
+            const response = await axios.put(`https://capstone-backend-05tj.onrender.com/apiAssignments/submission/${submissionId}`, updatedSubmission, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -157,7 +157,7 @@ export const AssignmentProvider = ({ children }) => {
 
     const gradeSubmission = async (assignmentId, submissionId, grade, comments) => {
         try {
-            const response = await axios.put(`https://server-o2fj.onrender.com/apiAssignments/submission/${assignmentId}/${submissionId}/grade`, { grade, comments }, {
+            const response = await axios.put(`https://capstone-backend-05tj.onrender.com/apiAssignments/submission/${assignmentId}/${submissionId}/grade`, { grade, comments }, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',

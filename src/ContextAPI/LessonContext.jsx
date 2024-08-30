@@ -17,7 +17,7 @@ export const LessonProvider = ({ children }) => {
     const fetchLessonsByCourseId = async (courseId) => {
         setLoading(true);
         try {
-            const response = await axios.get(`https://server-o2fj.onrender.com/apiLessons/lesson/course/${courseId}`, {
+            const response = await axios.get(`https://capstone-backend-05tj.onrender.com/apiLessons/lesson/course/${courseId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -34,7 +34,7 @@ export const LessonProvider = ({ children }) => {
     const fetchLessonById = async (lessonId) => {
         setLoading(true);
         try {
-            const response = await axios.get(`https://server-o2fj.onrender.com/apiLessons/lesson/${lessonId}`, {
+            const response = await axios.get(`https://capstone-backend-05tj.onrender.com/apiLessons/lesson/${lessonId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -53,7 +53,7 @@ export const LessonProvider = ({ children }) => {
     const createLesson = async (courseId, lessonData) => {
         setLoading(true);
         try {
-            const response = await axios.post(`https://server-o2fj.onrender.com/apiLessons/lesson/${courseId}`, lessonData, {
+            const response = await axios.post(`https://capstone-backend-05tj.onrender.com/apiLessons/lesson/${courseId}`, lessonData, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export const LessonProvider = ({ children }) => {
     const updateLesson = async (lessonId, updatedData) => {
         setLoading(true);
         try {
-            const response = await axios.put(`https://server-o2fj.onrender.com/apiLessons/lesson/${lessonId}`, updatedData, {
+            const response = await axios.put(`https://capstone-backend-05tj.onrender.com/apiLessons/lesson/${lessonId}`, updatedData, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ export const LessonProvider = ({ children }) => {
     const deleteLesson = async (lessonId) => {
         setLoading(true);
         try {
-            await axios.delete(`https://server-o2fj.onrender.com/apiLessons/lesson/${lessonId}`, {
+            await axios.delete(`https://capstone-backend-05tj.onrender.com/apiLessons/lesson/${lessonId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -109,7 +109,7 @@ export const LessonProvider = ({ children }) => {
     const markLessonAsCompleted = async (lessonId, userId, completionStatus) => {
         setLoading(true);
         try {
-            await axios.post(`https://server-o2fj.onrender.com/apiLessons/lesson/${lessonId}/complete`, {
+            await axios.post(`https://capstone-backend-05tj.onrender.com/apiLessons/lesson/${lessonId}/complete`, {
                 userId,
                 completionStatus
             }, {
@@ -130,7 +130,7 @@ export const LessonProvider = ({ children }) => {
     const fetchCourseProgress = async (courseId) => {
         setLoading(true);
         try {
-            const response = await axios.get(`https://server-o2fj.onrender.com/apiLessons/course/${courseId}/progress`, {
+            const response = await axios.get(`https://capstone-backend-05tj.onrender.com/apiLessons/course/${courseId}/progress`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ export const LessonProvider = ({ children }) => {
     const fetchCompletedStudents = async (lessonId) => {
         setLoading(true);
         try {
-            const response = await axios.get(`https://server-o2fj.onrender.com/apiLessons/lesson/${lessonId}/completed-students`, {
+            const response = await axios.get(`https://capstone-backend-05tj.onrender.com/apiLessons/lesson/${lessonId}/completed-students`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },

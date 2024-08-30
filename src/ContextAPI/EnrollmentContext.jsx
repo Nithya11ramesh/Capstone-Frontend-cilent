@@ -16,7 +16,7 @@ export const EnrollmentProvider = ({ children }) => {
         setLoading(true);
         setError(null); // Clear previous errors
         try {
-            const response = await axios.get('https://server-o2fj.onrender.com/apiEnrollments', {
+            const response = await axios.get('https://capstone-backend-05tj.onrender.com/apiEnrollments', {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -40,7 +40,7 @@ export const EnrollmentProvider = ({ children }) => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get(`https://server-o2fj.onrender.com/apiEnrollments/${courseId}`, {
+            const response = await axios.get(`https://capstone-backend-05tj.onrender.com/apiEnrollments/${courseId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -57,7 +57,7 @@ export const EnrollmentProvider = ({ children }) => {
     const fetchEnrollmentByUser = async (userId) => {
 
         try {
-            const response = await axios.get(`https://server-o2fj.onrender.com/apiEnrollments/${userId}`, {
+            const response = await axios.get(`https://capstone-backend-05tj.onrender.com/apiEnrollments/${userId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -76,7 +76,7 @@ export const EnrollmentProvider = ({ children }) => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get(`https://server-o2fj.onrender.com/apiEnrollments/${enrollmentId}`, {
+            const response = await axios.get(`https://capstone-backend-05tj.onrender.com/apiEnrollments/${enrollmentId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -95,7 +95,7 @@ export const EnrollmentProvider = ({ children }) => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.post(`https://server-o2fj.onrender.com/apiEnrollments/${courseId}`, enrollmentData, {
+            const response = await axios.post(`https://capstone-backend-05tj.onrender.com/apiEnrollments/${courseId}`, enrollmentData, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ export const EnrollmentProvider = ({ children }) => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.put(`https://server-o2fj.onrender.com/apiEnrollments/${enrollmentId}`, updatedData, {
+            const response = await axios.put(`https://capstone-backend-05tj.onrender.com/apiEnrollments/${enrollmentId}`, updatedData, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ export const EnrollmentProvider = ({ children }) => {
         setLoading(true);
         setError(null);
         try {
-            await axios.delete(`https://server-o2fj.onrender.com/apiEnrollments/${enrollmentId}`, {
+            await axios.delete(`https://capstone-backend-05tj.onrender.com/apiEnrollments/${enrollmentId}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
