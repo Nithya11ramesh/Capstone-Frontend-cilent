@@ -1,0 +1,13 @@
+/* Style for the entire carousel container */
+.carousel-border {
+    border: 2px solid black; /* Border around the carousel */
+     /* Optional: rounded corners */
+    overflow: hidden; /* Ensure images do not overflow the border */
+  }
+  
+  /* Style for the images within the carousel */
+  .carousel-image {
+    border: 2px solid #333; /* Border around each image */
+    border-radius: 10px; /* Optional: rounded corners for images */
+  }
+  

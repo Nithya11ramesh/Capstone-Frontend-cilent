@@ -1,0 +1,53 @@
+.facebook-icon {
+    color: #3b5998; /* Facebook Blue */
+}
+
+.instagram-icon {
+    color: #E1306C; /* Instagram Pinkish */
+}
+
+.twitter-icon {
+    color: #1DA1F2; /* Twitter Blue */
+}
+
+.youtube-icon {
+    color: #FF0000; /* YouTube Red */
+}
+
+.linkedin-icon {
+    color: #0077b5; /* LinkedIn Blue */
+}
+
+footer ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+footer a {
+    font-size: 1.5rem; /* Adjust the size of the icons */
+}
+
+footer p, footer h5 {
+    margin: 0;
+    padding: 0;
+}
+.company-logo {
+    height: 40px; /* Adjust the size of the logos */
+    width: auto;
+}
+
+footer ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+footer a {
+    font-size: 1.5rem; /* Adjust the size of the icons */
+}
+
+footer p, footer h5 {
+    margin: 0;
+    padding: 0;
+}

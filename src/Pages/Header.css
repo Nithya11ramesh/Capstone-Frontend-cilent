@@ -1,0 +1,17 @@
+.smart-bar {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    cursor:pointer;
+ display:flex;
+ justify-content:center;
+ 
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure it stays on top */
+    border-bottom: 1px solid #f5c6cb;
+}
+

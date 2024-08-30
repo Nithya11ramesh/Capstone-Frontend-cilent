@@ -1,0 +1,10 @@
+.App{
+  
+  background-image: url("https://wallpapercave.com/w/wp11390152");
+  background-size: cover;
+  color: rgb(14, 12, 12);
+}
+body {
+font-family: "Roboto" !important; 
+scroll-behavior: smooth;
+}
