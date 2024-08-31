@@ -10,7 +10,7 @@ import { Container, Card, } from 'react-bootstrap';
 import { useParams, useLocation } from "react-router-dom";
 import axios from 'axios';
 // Load your publishable key from Stripe
-const stripePromise = loadStripe("sk_test_51Pt9giP4khmHONAmexWH3oUKuS3nElMiytONcLQePmM7LgG7xIyyNOzKNovSHQIWWfX4AYA05LeqwaKE5dXUWIQ800N1QLKchk");
+const stripePromise = loadStripe("pk_test_51Pt9giP4khmHONAmh5JOVUHEry5uSLv47rMA1M0jxM1ZNukurt2Nnj1Gky9rsTTDjeMZI4QUIZynkC5ZAxBNfjk200KAlhp5K5");
 
 
 const PaymentPage = ({ onSuccess = () => { } }) => {

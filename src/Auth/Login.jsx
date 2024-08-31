@@ -70,8 +70,7 @@ const Login = () => {
                 }
             }
         }
-    }, [users]);
-
+    }, [users,navigate])
     return (
         <div className="container">
             <div className="card mb-3">
