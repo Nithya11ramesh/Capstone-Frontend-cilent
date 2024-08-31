@@ -11,7 +11,7 @@ export const CourseProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
 
-    const API_URL = 'https://server-o2fj.onrender.com/apiCourses';
+    const API_URL = 'https://capstone-backend-05tj.onrender.com';
 
     const fetchCourses = async () => {
         setLoading(true);
