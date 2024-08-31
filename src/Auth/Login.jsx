@@ -29,7 +29,7 @@ const Login = () => {
         setLoading(true);
         try {
             // Sending a POST request to the backend login route
-            const response = await axios.post('https://capstone-backend-05tj.onrender.com/login', {
+            const response = await axios.post('https://capstone-backend-05tj.onrender.com/apiUsers/login', {
                 email: values.email,
                 password: values.password,
             });
