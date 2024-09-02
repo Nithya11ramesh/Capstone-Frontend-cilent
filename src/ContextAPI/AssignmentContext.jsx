@@ -57,7 +57,7 @@ export const AssignmentProvider = ({ children }) => {
 
     const deleteAssignment = async (assignmentId) => {
         try {
-            await axios.delete(`https://server-o2fj.onrender.com/apiAssignments/${assignmentId}`);
+            await axios.delete(`https://capstone-backend-05tj.onrender.com/apiCourses/apiAssignments/${assignmentId}`);
             setAssignments(prevAssignments => prevAssignments.filter(assignment => assignment._id !== assignmentId), {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,

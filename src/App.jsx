@@ -1,7 +1,7 @@
 
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import './Styles/Main.css';
+import './Styles/Main.css';
 import './App.css';
 //ContextApi's
 import { AuthProvider } from './ContextAPI/AuthContext';

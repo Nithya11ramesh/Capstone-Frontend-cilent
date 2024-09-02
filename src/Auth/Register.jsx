@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -25,34 +25,38 @@ const Register = () => {
     password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
   });
 
-  
   const onSubmit = async (values, { setSubmitting }) => {
     setLoading(true);
     try {
       const response = await axios.post('https://capstone-backend-05tj.onrender.com/apiUsers/register', values);
       
-      // Check if the response contains the user data (e.g., token or user object)
       if (response.data) {
-        // Store user data in session storage
         sessionStorage.setItem('user', JSON.stringify(response.data));
-        
         message.success('Registration successful');
-        
-        // Redirect to login page after successful registration
         navigate('/login');
       } else {
         message.error('Registration failed! Please try again.');
       }
     } catch (error) {
-      // Log the error for better debugging
-      console.error("Registration Error: ", error.response ? error.response.data : error.message);
-      message.error('Registration failed! Please try again.');
+      if (error.response) {
+        // Server responded with a status other than 2xx
+        console.error("Registration Error: ", error.response.data);
+        message.error(`Registration failed! ${error.response.data.message || 'Please try again.'}`);
+      } else if (error.request) {
+        // Request was made but no response received
+        console.error("Registration Error: No response received", error.request);
+        message.error('No response received from the server. Please try again.');
+      } else {
+        // Something else happened
+        console.error("Registration Error: ", error.message);
+        message.error('Registration failed! Please try again.');
+      }
     } finally {
       setLoading(false);
       setSubmitting(false);
     }
   };
-  
+
   return (
     <div className="container">
       <div className="card mb-3">
@@ -61,7 +65,7 @@ const Register = () => {
             <img
               src="https://static.vecteezy.com/system/resources/previews/021/272/478/original/isometric-flat-3d-illustration-concept-of-man-filling-registration-form-on-screen-free-vector.jpg"
               className="img-fluid rounded-start login-image"
-              alt="..."
+              alt="Registration"
             />
           </div>
           <div className="col-md-6 col-12">

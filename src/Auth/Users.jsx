@@ -21,7 +21,7 @@ const Users = () => {
 
     const handleDelete = async (userId) => {
         try {
-            await axios.delete(`https://server-o2fj.onrender.com/apiUsers/users/${userId}`, {
+            await axios.delete(`https://capstone-backend-05tj.onrender.com/apiUsers/users/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -36,7 +36,7 @@ const Users = () => {
 
     const handleUpdate = async () => {
         try {
-            await axios.put(`http://localhost:4000/apiUsers/users/${selectedUser._id}`, selectedUser, {
+            await axios.put(`https://capstone-backend-05tj.onrender.com/apiUsers/users/${selectedUser._id}`, selectedUser, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },

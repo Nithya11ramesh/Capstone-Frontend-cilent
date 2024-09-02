@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from 'react';
 import { CourseContext } from '../ContextAPI/CourseContext';
@@ -8,7 +9,7 @@ import { message } from 'antd';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 const CourseList = () => {
-    const { fetchCourses, deleteCourse, courses, loading, error } = useContext(CourseContext);
+    const { fetchCourses, deleteCourse, courses, loading } = useContext(CourseContext);
     const { users } = useContext(AuthContext);
     const [showEditForm, setShowEditForm] = useState(false);
     const [selectedCourseId, setSelectedCourseId] = useState(null);
@@ -19,7 +20,7 @@ const CourseList = () => {
 
     useEffect(() => {
         fetchCourses();
-    }, [fetchCourses]);
+    }, []);
 
     useEffect(() => {
         setSortedCourses(courses);
@@ -100,6 +101,7 @@ const CourseList = () => {
                     id="dropdown-sort-button"
                     title="Sort Options"
                     onSelect={handleSort}
+                    variant="outline-dark"
                 >
                     <Dropdown.Item eventKey="A to Z">A to Z</Dropdown.Item>
                     <Dropdown.Item eventKey="Z to A">Z to A</Dropdown.Item>
@@ -107,28 +109,61 @@ const CourseList = () => {
                     <Dropdown.Item eventKey="High Price to Low Price">High Price to Low Price</Dropdown.Item>
                 </DropdownButton>
             </div>
-            {loading && <div>Loading...</div>}
-            {error && <div>{error}</div>}
-            <div className="row">
-                {filteredCourses.map((course) => (
-                    <div className="col-lg-4 col-md-6 mb-4" key={course._id}>
-                        <div className="card">
-                            <img src={course.thumbnail} className="card-img-top" alt={course.title} />
-                            <div className="card-body">
-                                <h5 className="card-title">{course.title}</h5>
-                                <p className="card-text">{course.description}</p>
-                                <p className="card-text"><strong>Price:</strong> ${course.price}</p>
-                                <button onClick={() => handleLessons(course._id)} className="btn btn-primary">Lessons</button>
-                                <button onClick={() => handleAssignments(course._id)} className="btn btn-secondary ms-2">Assignments</button>
-                                <button onClick={() => handleQuizzes(course._id)} className="btn btn-success ms-2">Quizzes</button>
-                                <button onClick={() => handleEditCourse(course._id)} className="btn btn-warning ms-2">Edit</button>
-                                <button onClick={() => handleDeleteCourse(course._id)} className="btn btn-danger ms-2">Delete</button>
+            {users && users.role === 'admin' && (
+                <div className="d-flex justify-content-end">
+                    <Link to={`/create-course`} className="btn btn-success me-4 mb-2">
+                        Add Course
+                    </Link>
+                </div>
+            )}
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                {loading ? (
+                    <p>Loading courses...</p>
+                ) : filteredCourses.length === 0 ? (
+                    <p>No courses available.</p>
+                ) : (
+                    filteredCourses.map((course) => (
+                        <div className="col mb-4 d-flex justify-content-center" key={course._id}>
+                            <div className="card h-100" style={{ width: '350px' }}>
+                                {course.images && (
+                                    <img src={course.images[0]} alt={course.title} className="card-img-top img-fluid" style={{ border: '3px solid gold', borderRadius: '15%' }} />
+                                )}
+                                <div className="card-body">
+                                    <h5 className="card-title pacifico-regular mb-3">{course.title}</h5>
+                                    <p><strong>Category:</strong> {course.category}</p>
+                                    <p><strong>Price:</strong> ${course.price}</p>
+                                    <div className="d-flex justify-content-between align-items-center mb-3">
+                                        {users && (users.role === 'admin' || users.role === 'instructor') && (<>
+                                            <button className="btn btn-outline-info asap me-1" onClick={() => handleLessons(course._id)}>Lessons</button>
+                                            <button className="btn btn-outline-info asap me-1" onClick={() => handleAssignments(course._id)}>Assignments</button>
+                                            <button className="btn btn-outline-info asap me-1" onClick={() => handleQuizzes(course._id)}>Quizzes</button>
+                                        </>
+                                        )}
+                                    </div>
+                                    <div className="d-flex justify-content-between align-items-center">
+                                        {users && users.role === 'admin' && (
+                                            <>
+                                                <button className="btn btn-warning asap me-2" onClick={() => handleEditCourse(course._id)}>Edit</button>
+                                                <button className="btn btn-danger asap me-2" onClick={() => handleDeleteCourse(course._id)}>Delete</button>
+                                            </>
+                                        )}
+                                        {users && (
+                                            <Link to={`/courses/${course._id}`} className="btn btn-primary me-2">
+                                                See More
+                                            </Link>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                )}
             </div>
-            {showEditForm && <CourseEditForm courseId={selectedCourseId} />}
+            <CourseEditForm
+                show={showEditForm}
+                handleClose={() => setShowEditForm(false)}
+                courseId={selectedCourseId}
+            />
         </div>
     );
 };

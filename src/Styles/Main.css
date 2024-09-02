@@ -1,0 +1,39 @@
+.login-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: fit-content;
+    min-height: 80vh;
+    padding: 20px;
+    /* margin-bottom: 20px; */
+  }
+  
+  .card {
+    width: fit-content;
+    height: fit-content;
+    max-width:1000px; /* Adjust the max-width as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  
+  .row {
+    width: 100%;
+  }
+  
+  .card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+  }
+  

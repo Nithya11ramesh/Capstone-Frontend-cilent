@@ -36,7 +36,7 @@ const Login = () => {
     
             // Extracting the token from the response
             const { token } = response.data;
-    
+    console.log(token);
             // Storing the token in localStorage for further authenticated requests
             localStorage.setItem('token', token);
     
@@ -70,7 +70,7 @@ const Login = () => {
                 }
             }
         }
-    }, [users,navigate])
+    }, [users])
     return (
         <div className="container">
             <div className="card mb-3">

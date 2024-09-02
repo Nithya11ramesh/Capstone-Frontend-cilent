@@ -1,7 +1,6 @@
 import { useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { CourseContext } from '../ContextAPI/CourseContext';
-import { Link } from 'react-router-dom';
 
 const CourseDetails = () => {
     const { courseId } = useParams();
@@ -29,14 +28,19 @@ const CourseDetails = () => {
                             ) : currentCourse ? (
                                 <div className="col">
                                     <div className="card">
-                                        <img src={currentCourse.images} alt={currentCourse.title} className="card-img-top img-fluid" style={{ width: '50%' }} />
+                                        <img
+                                            src={currentCourse.images || 'https://via.placeholder.com/300'} // Default image
+                                            alt={currentCourse.title || 'Course Image'}
+                                            className="card-img-top img-fluid"
+                                            style={{ width: '50%', margin: 'auto' }}
+                                        />
                                         <div className="card-body">
-                                            <h5 className="card-title pacifico-regular">{currentCourse.title}</h5>
-                                            <h6 className="card-text asap">Course Description: {currentCourse.description}</h6>
-                                            <h6 className="card-text asap">Course price: Rs.{currentCourse.price}</h6>
-                                            <h6 className="card-text asap">Course Duration: {currentCourse.duration} Months</h6>
-                                            <h6 className="card-text asap">Course Lessons: {currentCourse.lessons.length}</h6>
-                                            <h6 className="card-text asap">Course instructor: {currentCourse.instructor ? `${currentCourse.instructor.firstName} ${currentCourse.instructor.lastName}` : 'Unknown'}</h6>
+                                            <h5 className="card-title pacifico-regular">{currentCourse.title || 'No Title Available'}</h5>
+                                            <h6 className="card-text asap">Course Description: {currentCourse.description || 'No Description Available'}</h6>
+                                            <h6 className="card-text asap">Course Price: Rs.{currentCourse.price || 'N/A'}</h6>
+                                            <h6 className="card-text asap">Course Duration: {currentCourse.duration || 'N/A'} Months</h6>
+                                            <h6 className="card-text asap">Course Lessons: {currentCourse.lessons ? currentCourse.lessons.length : 'N/A'}</h6>
+                                            <h6 className="card-text asap">Course Instructor: {currentCourse.instructor ? `${currentCourse.instructor.firstName} ${currentCourse.instructor.lastName}` : 'Unknown'}</h6>
                                             <Link to={`/enroll/${currentCourse._id}`} className="btn btn-success me-2 asap mb-2">
                                                 Enroll
                                             </Link>
